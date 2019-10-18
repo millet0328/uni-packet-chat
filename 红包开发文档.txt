@@ -1,0 +1,65 @@
+抢红包返回 
+{"code":"0","msg":"抢包失败"} //抢去失败  抢包发包code为0直接信息框提示
+
+
+Web.Url ＝ “http://sl.daikan8.com/app/api.php?id=1&type=0&token=”  抢红包
+id=红包id
+
+返回信息
+{"total":"9","money":"100.00","rt":[{"time":"1568217369","money":"4.42","name":"","url":"","Bomb":"1"}]}
+total  红包总数
+bomb   1说明你中雷了  0没中
+
+
+
+Web.Url ＝ “http://sl.daikan8.com/app/api.php?money=100&Number=9&Bomb=1&type=1&group=1&token=” 发红包
+money=100  //钱
+&Number=9  //分为几个红包
+&Bomb=1  //设定的雷是多少
+&type=1  
+&group=1   //在那个群发的红包
+返回 {"code":"1","id":"35"}  //为红包id 你自己判断左边还是右边
+
+
+
+http://sl.daikan8.com/app/login?uid=1100  //登录地址  先随意弄的 方便测试 后期微信登录
+{"type":"1","token":"c3c37m2hgqnhk4ue2hbqme4r11"}  
+
+
+
+
+ws://sl.daikan8.com:8282  //长链接地址
+{\type\:\ok\,\sid\:\7f0000010b5600000002\}
+
+
+ {"Number":"7","money":"100","time":1568029313,"nickname":"红豆","avatar":"http:\/\/thirdwx.qlogo.cn\/mmopen\/vi_32\/rTUE0MnibicvzJRJtTBof6ibkVbXe5gv5Cn0wJpE2qYbv7Uut9dWJs6grjcMnH74A7ocNwjNm72qPELq7GVvpQCrw\/132","id":5,"uid":"5238","type":0}
+
+
+Socket
+
+
+client_id= 上面的sid
+http://sl.daikan8.com/app/api.php?type=3&client_id=7f0000010b5700000002 //带上cook  uid绑定长连接接口 用于谁抢了他的红包提示
+
+
+http://sl.daikan8.com/app/Return/?type=1&token=  //游戏记录
+
+///////////////
+lx=
+减去余额-  0发包记录 2中雷 加余额 1收红包  3别人踩雷奖励  4 特殊号码奖励 //5雷数量奖励	 6发包代理返现
+
+[{"time":"1568208642","xgq":"100.00","lx":"0"},{"time":"1568208640","xgq":"100.00","lx":"0"},{"time":"1568208619","xgq":"100.00","lx":"0"},{"time":"1568208608","xgq":"100.00","lx":"0"},{"time":"1568208515","xgq":"100.00","lx":"0"},{"time":"1568208503","xgq":"100.00","lx":"0"},{"time":"1568208477","xgq":"100.00","lx":"0"},{"time":"1568208324","xgq":"100.00","lx":"0"},{"time":"1568208323","xgq":"100.00","lx":"0"},{"time":"1568208321","xgq":"100.00","lx":"0"},{"time":"1568208304","xgq":"100.00","lx":"0"},{"time":"1568208254","xgq":"100.00","lx":"0"},{"time":"1568208253","xgq":"100.00","lx":"0"},{"time":"1568208253","xgq":"100.00","lx":"0"},{"time":"1568208252","xgq":"100.00","lx":"0"},{"time":"1568208251","xgq":"100.00","lx":"0"},{"time":"1568208240","xgq":"100.00","lx":"0"},{"time":"1568208064","xgq":"100.00","lx":"0"},{"time":"1568207957","xgq":"100.00","lx":"0"},{"time":"1568206248","xgq":"100.00","lx":"0"},{"time":"1568206233","xgq":"100.00","lx":"0"},{"time":"1568206165","xgq":"100.00","lx":"0"},{"time":"1568206164","xgq":"100.00","lx":"0"},{"time":"1568206164","xgq":"100.00","lx":"0"},{"time":"1568206162","xgq":"100.00","lx":"0"},{"time":"1568205543","xgq":"100.00","lx":"0"},{"time":"1568205542","xgq":"100.00","lx":"0"},{"time":"1568188420","xgq":"420.00","lx":"3"},{"time":"1568188419","xgq":"100.00","lx":"0"}]
+
+http://sl.daikan8.com/app/Return/?type=2&token=filivibal17trg714o63r7he86 //获取账户余额
+{"money":"1477.45"}
+
+http://sl.daikan8.com/app/Return/?type=3&token=filivibal17trg714o63r7he86 //获取推荐的人
+[{"name":"测试1101","tx":"头像url","time":"1568030847"}] 
+
+http://sl.daikan8.com/app/Return/?type=1&token=  //游戏记录
+
+http://sl.daikan8.com/app/Return/?type=3&token=filivibal17trg714o63r7he86 //获取推荐的人
+[{"name":"测试1101","tx":"头像url","time":"1568030847"}]  
+
+
+http://sl.daikan8.com/app/Return/?type=4&token=filivibal17trg714o63r7he86 //获取推荐的人 这个就不做分页 我直接给你返回最近100条

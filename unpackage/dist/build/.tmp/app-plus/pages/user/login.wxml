@@ -1,0 +1,1 @@
+<view class="container"><input type="text" data-event-opts="{{[['input',[['__set_model',['$0','uid','$event',[]],['formData']]]]]}}" value="{{formData.uid}}" bindinput="__e"/><button type="primary" data-event-opts="{{[['tap',[['loginHandle',['$event']]]]]}}" bindtap="__e">登录</button></view>
