@@ -47,6 +47,11 @@
 			"style": {
 				"navigationBarTitleText": "我的推荐"
 			}
+		},{
+			"path": "pages/user/test",
+			"style": {
+				"navigationBarTitleText": "测试"
+			}
 		}
 	],
 	"globalStyle": {

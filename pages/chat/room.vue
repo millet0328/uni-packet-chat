@@ -1,20 +1,11 @@
 <template>
 	<view>
 		<view class="cu-chat" @touchstart="drawerVisible = false">
-			<scroll-view scroll-y="true" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop" :scroll-into-view="scrollToView"
-			 @scrolltoupper="loadHistory">
-				<!-- 加载历史数据waitingUI -->
-				<view class="loading">
-					<view class="spinner">
-						<view class="rect1"></view>
-						<view class="rect2"></view>
-						<view class="rect3"></view>
-						<view class="rect4"></view>
-						<view class="rect5"></view>
-					</view>
-				</view>
+			<scroll-view scroll-y="true" :scroll-top="scrollTop" :scroll-into-view="scrollToView" :scroll-with-animation="scrollAnimation">
+				<!-- loading数据 -->
+
 				<!-- 消息列表 -->
-				<view class="row" v-for="(row,index) in msgList" :key="index" :id="'msg'+row.msg.id">
+				<view class="row" v-for="(row,index) in msgList" :key="index" :id="'msg-'+ index">
 					<!-- 系统消息 -->
 					<block v-if="row.type=='system'">
 						<!-- 文字消息 -->
@@ -26,37 +17,20 @@
 						</view>
 					</block>
 					<!-- 用户消息 -->
-					<block v-if="row.type=='user'">
+					<block v-if="row.type=='packet'">
 						<!-- 自己发出的消息 -->
-						<view class="cu-item" :class="{self:row.msg.userinfo.uid==myuid}">
-							<view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+						<view class="cu-item" :class="{self:row.uid==myuid}">
+							<view class="cu-avatar radius" :style="{backgroundImage:'url('+ row.avatar +')'}"></view>
 							<view class="main">
-								<!-- 文字消息 -->
-								<view v-if="row.msg.type=='text'" class="content shadow">
-									<rich-text :nodes="row.msg.content.text"></rich-text>
-								</view>
-								<!-- 图片消息 -->
-								<image v-if="row.msg.type=='img'" :src="row.msg.content.url" src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg"
-								 class="radius" mode="widthFix"></image>
-								<!-- 语言消息 -->
-								<template v-if="row.msg.type=='voice'">
-									<view class="content shadow">
-										<text class="cuIcon-sound text-xxl padding-right-xl"> </text>
-									</view>
-									<view class="action text-bold text-grey">
-										{{row.msg.content.length}} "
-									</view>
-								</template>
 								<!-- 红包消息 -->
-								<view v-if="row.msg.type=='redEnvelope'" class="red-envelope" @tap="openRedEnvelope(row.msg,index)">
+								<view class="red-envelope" @tap="openRedEnvelope(row.msg,index)">
 									<image src="/static/img/red-envelope.png"></image>
 									<view class="blessing">
-										{{row.msg.content.blessing}}
+										{{row.money}}/{{row.number}}
 									</view>
 								</view>
-
 							</view>
-							<view class="date">{{row.msg.time}}</view>
+							<view class="date">{{new Date(row.time).toLocaleString()}}</view>
 						</view>
 					</block>
 				</view>
@@ -124,8 +98,8 @@
 			return {
 				myuid: 0,
 				//消息列表
-				isHistoryLoading: false,
-				scrollAnimation: false,
+				isLoading: false,
+				scrollAnimation: true,
 				scrollTop: 0,
 				scrollToView: '',
 				msgList: [],
@@ -161,11 +135,20 @@
 				}, 500);
 			},
 		},
-		onLoad() {
-
+		watch: {
+			msgList: function(newValue) {
+				this.$nextTick(function() {
+					this.scrollToView = 'msg-' + (newValue.length - 1);
+				})
+			}
+		},
+		// 监听参数
+		onLoad({ packet }) {
+			console.log(packet)
+			// 如果有红包参数
+			this.screenMsg();
 		},
 		onShow() {
-			return
 			// 建立websocket连接
 			uni.connectSocket({
 				url: 'ws://sl.daikan8.com:8282',
@@ -266,16 +249,28 @@
 
 	}
 
-	.cu-chat .row {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		-webkit-flex-direction: column;
-		-ms-flex-direction: column;
-		flex-direction: column;
+	.cu-chat {
+		display: block;
+		flex-direction: inherit;
+
+		scroll-view {
+			position: absolute;
+			top: 0;
+			bottom: 106upx;
+			width: 100%;
+		}
+
+		.row {
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+			flex-direction: column;
+		}
 	}
 
 	.red-envelope {

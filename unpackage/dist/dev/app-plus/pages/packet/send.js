@@ -1,2 +1,0 @@
-setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"cu-form-group .",[1],"title { min-width: calc(4em + 15px); }\n",],undefined,{path:"./pages/packet/send.wxss"})();
-document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/packet/send.wxml') } }));

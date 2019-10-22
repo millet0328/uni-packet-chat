@@ -22,7 +22,7 @@
 		</view>
 		<view class="cu-list menu sm-border">
 			<view class="cu-item margin-tb-xs arrow">
-				<navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+				<navigator class="content" hover-class="none" url="../list/list">
 					<text class="cuIcon-pay text-olive"></text>
 					<text class="text-grey">钱包</text>
 				</navigator>
@@ -31,37 +31,37 @@
 				</view>
 			</view>
 			<view class="cu-item arrow">
-				<navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+				<navigator class="content" hover-class="none" url="./recommend">
 					<text class="cuIcon-fork text-purple"></text>
 					<text class="text-grey">我的推广</text>
 				</navigator>
 			</view>
 			<view class="cu-item arrow">
-				<navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+				<navigator class="content" hover-class="none" url="../list/list">
 					<text class="cuIcon-service text-green"></text>
 					<text class="text-grey">客服充值</text>
 				</navigator>
 			</view>
 			<view class="cu-item margin-tb-xs arrow">
-				<navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+				<navigator class="content" hover-class="none" url="../list/list">
 					<text class="cuIcon-recharge text-orange"></text>
 					<text class="text-grey">充值</text>
 				</navigator>
 			</view>
 			<view class="cu-item arrow">
-				<navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+				<navigator class="content" hover-class="none" url="../list/list">
 					<text class="cuIcon-sponsor text-red"></text>
 					<text class="text-grey">提现</text>
 				</navigator>
 			</view>
 			<view class="cu-item arrow">
-				<navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+				<navigator class="content" hover-class="none" url="../list/list">
 					<text class="cuIcon-form text-mauve"></text>
 					<text class="text-grey">资金记录</text>
 				</navigator>
 			</view>
 			<view class="cu-item margin-tb-xs arrow">
-				<navigator class="content" hover-class="none" url="../list/list" open-type="redirect">
+				<navigator class="content" hover-class="none" url="../list/list">
 					<text class="cuIcon-settings text-pink"></text>
 					<text class="text-grey">设置</text>
 				</navigator>
